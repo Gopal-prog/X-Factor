@@ -1,0 +1,501 @@
+event_id,project_id,control_id,domain,parameter,severity,approved,maintenance_window,actor,environment,baseline_value,new_value,drift,risk_score,label
+1,2,13,Endpoint,Real Time Protection,Low,1,0,Engineer,Development,VPN,Internal,1,15,Safe
+2,2,3,Logging,System Logging,Critical,1,0,Engineer,Staging,AES256,Internal,1,60,Risky
+3,3,14,Cloud,S3 Public Access,Low,0,0,Administrator,Production,Enabled,Public,1,55,Risky
+4,3,11,Firewall,SSH Port,High,0,0,Engineer,Production,FALSE,FALSE,0,65,Risky
+5,2,7,Firewall,RDP,Low,0,1,CI/CD,Production,Internal,AES128,1,50,Risky
+6,1,16,Endpoint,Real Time Protection,High,1,1,Administrator,Development,FALSE,TRUE,1,30,Safe
+7,1,6,Endpoint,Firewall,High,0,0,Administrator,Production,Enabled,Enabled,0,65,Risky
+8,2,2,Firewall,RDP,Critical,0,0,Engineer,Production,Enabled,Disabled,1,90,Risky
+9,1,4,Endpoint,Firewall,Critical,0,1,Administrator,Staging,FALSE,TRUE,1,70,Risky
+10,3,16,Firewall,ICMP,Critical,1,1,Engineer,Production,AES256,FALSE,1,70,Risky
+11,1,7,Database,Remote Access,Medium,0,0,Engineer,Development,Enabled,Internal,1,40,Safe
+12,3,20,Database,Audit Logging,Low,0,1,Administrator,Production,AES256,AES128,1,50,Risky
+13,3,11,Endpoint,USB Access,Medium,0,1,Administrator,Production,VPN,Enabled,1,60,Risky
+14,2,1,Cloud,CloudTrail,Critical,1,0,CI/CD,Development,VPN,TRUE,1,50,Risky
+15,3,18,Identity,Conditional Access,Low,0,1,Engineer,Staging,FALSE,TRUE,1,35,Safe
+16,1,15,Logging,Log Retention,Low,0,1,Engineer,Development,AES256,AES128,1,25,Safe
+17,1,17,Endpoint,Firewall,Low,1,1,Administrator,Development,TRUE,Public,1,10,Safe
+18,3,2,Cloud,Security Group,High,1,1,CI/CD,Production,TRUE,Public,1,55,Risky
+19,3,15,Identity,Password Length,Low,1,1,Engineer,Production,Enabled,Disabled,1,35,Safe
+20,3,17,Database,Audit Logging,Low,1,0,Engineer,Development,VPN,FALSE,1,15,Safe
+21,1,17,Logging,System Logging,High,1,1,Engineer,Production,FALSE,Internal,1,55,Risky
+22,2,9,Database,Remote Access,Critical,1,0,Administrator,Development,Disabled,TRUE,1,50,Risky
+23,1,18,Identity,Password Length,Low,1,1,CI/CD,Development,Internal,Public,1,10,Safe
+24,3,1,Firewall,HTTPS Port,High,0,0,Administrator,Production,AES256,Enabled,1,75,Risky
+25,3,4,Endpoint,Firewall,High,0,0,CI/CD,Development,AES256,FALSE,1,50,Risky
+26,2,14,Firewall,ICMP,High,0,0,Engineer,Development,VPN,Enabled,1,50,Risky
+27,2,18,Logging,System Logging,Critical,1,0,Administrator,Staging,Internal,AES128,1,60,Risky
+28,1,7,Identity,MFA,Medium,0,0,Administrator,Development,VPN,TRUE,1,40,Safe
+29,2,8,Firewall,ICMP,Medium,0,1,CI/CD,Development,Enabled,Enabled,0,25,Safe
+30,1,11,Identity,MFA,High,1,0,Engineer,Production,Disabled,Internal,1,60,Risky
+31,1,6,Endpoint,Real Time Protection,Low,0,0,Engineer,Staging,VPN,AES128,1,40,Safe
+32,3,1,Endpoint,Firewall,Medium,1,0,CI/CD,Staging,Internal,Enabled,1,35,Safe
+33,1,12,Database,Audit Logging,Medium,0,0,Engineer,Staging,FALSE,Enabled,1,50,Risky
+34,1,18,Firewall,HTTPS Port,Medium,1,1,Engineer,Staging,Enabled,Public,1,30,Safe
+35,1,18,Identity,Password Length,Critical,0,0,Administrator,Production,Disabled,Enabled,1,90,Risky
+36,2,3,Endpoint,Real Time Protection,High,1,1,Administrator,Production,AES256,FALSE,1,55,Risky
+37,2,13,Endpoint,Real Time Protection,Low,0,0,Administrator,Staging,Internal,Enabled,1,40,Safe
+38,3,15,Identity,Conditional Access,Critical,0,0,Engineer,Staging,Enabled,TRUE,1,75,Risky
+39,3,8,Identity,Password Length,Low,1,1,Administrator,Staging,FALSE,FALSE,0,10,Safe
+40,2,9,Identity,Password Length,Low,1,0,Engineer,Production,TRUE,FALSE,1,40,Safe
+41,2,3,Identity,MFA,Critical,1,1,CI/CD,Production,Internal,Enabled,1,70,Risky
+42,2,17,Firewall,RDP,Critical,1,1,Administrator,Production,TRUE,Enabled,1,70,Risky
+43,1,10,Cloud,Security Group,Medium,1,0,Engineer,Production,AES256,Internal,1,50,Risky
+44,3,17,Cloud,S3 Public Access,Low,1,0,Administrator,Development,Disabled,Disabled,0,5,Safe
+45,3,6,Logging,Log Integrity,Critical,1,0,CI/CD,Production,AES256,TRUE,1,75,Risky
+46,3,5,Identity,MFA,Critical,0,1,CI/CD,Development,TRUE,FALSE,1,60,Risky
+47,1,10,Firewall,RDP,High,1,1,CI/CD,Development,FALSE,TRUE,1,30,Safe
+48,1,2,Endpoint,Real Time Protection,Medium,0,1,Engineer,Staging,Disabled,FALSE,1,45,Safe
+49,1,7,Cloud,Security Group,Low,0,0,Administrator,Staging,TRUE,FALSE,1,40,Safe
+50,1,6,Identity,Password Length,Critical,1,1,CI/CD,Development,Disabled,AES128,1,45,Safe
+51,1,16,Identity,Password Length,Low,1,0,Administrator,Production,Enabled,Internal,1,40,Safe
+52,2,4,Database,Encryption,Low,1,1,Administrator,Staging,VPN,Disabled,1,20,Safe
+53,3,7,Firewall,HTTPS Port,High,1,0,Engineer,Development,FALSE,Enabled,1,35,Safe
+54,3,11,Endpoint,Firewall,High,0,1,Administrator,Production,AES256,Internal,1,70,Risky
+55,3,13,Logging,System Logging,Low,1,0,Administrator,Production,Disabled,Internal,1,40,Safe
+56,3,17,Endpoint,Firewall,Low,1,1,CI/CD,Development,TRUE,Public,1,10,Safe
+57,3,8,Cloud,Security Group,Critical,0,0,Administrator,Staging,FALSE,FALSE,0,65,Risky
+58,1,1,Firewall,HTTPS Port,Low,0,1,Engineer,Development,Disabled,AES128,1,25,Safe
+59,3,5,Firewall,HTTPS Port,Low,1,0,Administrator,Production,Enabled,Public,1,40,Safe
+60,1,1,Cloud,Security Group,Medium,0,0,Administrator,Production,VPN,Disabled,1,65,Risky
+61,3,10,Firewall,SSH Port,Low,0,0,Administrator,Staging,VPN,Internal,1,40,Safe
+62,3,13,Cloud,IAM MFA,Critical,0,1,Administrator,Development,Internal,Disabled,1,60,Risky
+63,3,5,Firewall,ICMP,Critical,1,1,Administrator,Production,VPN,TRUE,1,70,Risky
+64,3,17,Identity,MFA,Medium,1,0,Administrator,Staging,Enabled,Internal,1,35,Safe
+65,2,10,Logging,Log Integrity,Critical,1,1,Engineer,Development,FALSE,Public,1,45,Safe
+66,2,19,Firewall,ICMP,Low,1,1,Administrator,Development,Disabled,Public,1,10,Safe
+67,3,4,Identity,MFA,Critical,1,0,Engineer,Production,Enabled,AES128,1,75,Risky
+68,1,14,Endpoint,Firewall,Critical,1,0,Administrator,Development,FALSE,FALSE,0,40,Safe
+69,1,2,Database,Encryption,Medium,0,0,CI/CD,Production,FALSE,Enabled,1,65,Risky
+70,1,10,Identity,MFA,High,0,1,Administrator,Development,Enabled,FALSE,1,45,Safe
+71,1,9,Firewall,ICMP,Low,0,0,CI/CD,Production,Enabled,Enabled,0,45,Safe
+72,2,2,Cloud,IAM MFA,Medium,1,0,Engineer,Staging,Enabled,Disabled,1,35,Safe
+73,3,9,Cloud,CloudTrail,High,0,0,Engineer,Staging,FALSE,Internal,1,60,Risky
+74,1,20,Logging,Log Integrity,Critical,1,1,Administrator,Production,AES256,Enabled,1,70,Risky
+75,3,11,Database,Audit Logging,High,0,1,Administrator,Production,Internal,Disabled,1,70,Risky
+76,2,16,Database,Audit Logging,High,1,1,CI/CD,Production,Internal,Internal,0,45,Safe
+77,2,8,Identity,Conditional Access,Critical,1,1,CI/CD,Staging,FALSE,TRUE,1,55,Risky
+78,2,19,Logging,Log Integrity,High,0,1,Administrator,Production,Enabled,FALSE,1,70,Risky
+79,2,12,Endpoint,USB Access,Medium,0,0,Administrator,Production,Internal,Enabled,1,65,Risky
+80,2,2,Firewall,RDP,Critical,0,1,CI/CD,Staging,Disabled,Internal,1,70,Risky
+81,2,2,Logging,Log Retention,Medium,0,1,Administrator,Staging,Disabled,FALSE,1,45,Safe
+82,1,1,Identity,MFA,Low,1,1,Engineer,Production,FALSE,Enabled,1,35,Safe
+83,1,20,Endpoint,USB Access,Medium,1,1,Administrator,Development,VPN,Disabled,1,20,Safe
+84,3,15,Identity,Conditional Access,High,0,1,Administrator,Development,TRUE,FALSE,1,45,Safe
+85,1,6,Identity,Password Length,Low,1,1,Engineer,Development,TRUE,FALSE,1,10,Safe
+86,3,7,Logging,Log Retention,Medium,0,1,Administrator,Development,Internal,TRUE,1,35,Safe
+87,3,6,Firewall,SSH Port,High,0,1,CI/CD,Staging,Disabled,Internal,1,55,Risky
+88,2,7,Logging,Log Retention,Low,1,0,Administrator,Development,TRUE,AES128,1,15,Safe
+89,1,14,Endpoint,Real Time Protection,Critical,1,0,Administrator,Production,FALSE,Disabled,1,75,Risky
+90,2,8,Endpoint,Real Time Protection,Low,1,0,Administrator,Production,Internal,Public,1,40,Safe
+91,2,1,Logging,Log Integrity,Critical,1,0,CI/CD,Development,Enabled,Internal,1,50,Risky
+92,1,4,Cloud,CloudTrail,High,0,0,CI/CD,Staging,Enabled,Enabled,0,50,Risky
+93,2,9,Database,Remote Access,Low,1,1,CI/CD,Production,VPN,Public,1,35,Safe
+94,3,3,Identity,MFA,Low,1,1,Administrator,Development,Disabled,Internal,1,10,Safe
+95,1,3,Identity,MFA,Medium,1,0,Engineer,Staging,Disabled,Internal,1,35,Safe
+96,2,4,Endpoint,Real Time Protection,Low,1,1,Engineer,Production,FALSE,TRUE,1,35,Safe
+97,1,5,Endpoint,Real Time Protection,Medium,0,1,Administrator,Production,Internal,Public,1,60,Risky
+98,3,7,Logging,Log Integrity,Low,1,0,Engineer,Development,Disabled,Disabled,0,5,Safe
+99,2,18,Cloud,CloudTrail,Critical,1,1,CI/CD,Production,AES256,Internal,1,70,Risky
+100,1,10,Identity,Conditional Access,Critical,0,0,CI/CD,Production,VPN,Public,1,90,Risky
+101,2,15,Identity,Password Length,High,0,1,Engineer,Staging,Enabled,TRUE,1,55,Risky
+102,2,1,Cloud,IAM MFA,Low,0,1,Engineer,Production,Internal,Enabled,1,50,Risky
+103,3,12,Endpoint,Firewall,Critical,1,0,Administrator,Development,Disabled,Enabled,1,50,Risky
+104,3,19,Endpoint,Real Time Protection,Medium,1,0,Engineer,Staging,AES256,Public,1,35,Safe
+105,2,10,Database,Remote Access,Low,0,1,Engineer,Staging,Enabled,Public,1,35,Safe
+106,2,14,Firewall,ICMP,High,1,0,CI/CD,Staging,TRUE,AES128,1,45,Safe
+107,3,15,Identity,MFA,Low,0,1,CI/CD,Development,TRUE,Public,1,25,Safe
+108,2,3,Logging,Log Integrity,Low,0,0,CI/CD,Development,Enabled,AES128,1,30,Safe
+109,3,3,Database,Audit Logging,Medium,0,0,Administrator,Development,Disabled,Disabled,0,30,Safe
+110,3,10,Firewall,HTTPS Port,Medium,1,1,CI/CD,Production,TRUE,Enabled,1,45,Safe
+111,2,14,Logging,Log Retention,High,1,1,Administrator,Staging,TRUE,Internal,1,40,Safe
+112,2,16,Firewall,HTTPS Port,Low,0,0,CI/CD,Production,Internal,Enabled,1,55,Risky
+113,2,10,Cloud,CloudTrail,Medium,1,1,Administrator,Staging,Enabled,Internal,1,30,Safe
+114,3,13,Logging,System Logging,Medium,0,0,Engineer,Production,Disabled,TRUE,1,65,Risky
+115,1,13,Endpoint,USB Access,Low,0,0,Administrator,Staging,VPN,TRUE,1,40,Safe
+116,2,7,Identity,Password Length,Low,1,1,Engineer,Staging,Internal,AES128,1,20,Safe
+117,2,12,Firewall,SSH Port,High,0,1,Engineer,Production,Disabled,Disabled,0,60,Risky
+118,3,5,Cloud,IAM MFA,High,0,1,Engineer,Staging,Disabled,Enabled,1,55,Risky
+119,3,13,Cloud,S3 Public Access,Medium,1,1,Administrator,Production,Disabled,FALSE,1,45,Safe
+120,3,1,Logging,Log Integrity,High,0,0,CI/CD,Development,Enabled,Enabled,0,40,Safe
+121,3,19,Identity,Password Length,High,0,0,CI/CD,Production,Disabled,Enabled,1,75,Risky
+122,1,11,Firewall,ICMP,Medium,1,1,Administrator,Staging,AES256,AES128,1,30,Safe
+123,3,19,Cloud,S3 Public Access,Low,1,0,Administrator,Development,Internal,Enabled,1,15,Safe
+124,3,4,Firewall,SSH Port,Critical,1,0,CI/CD,Production,Disabled,AES128,1,75,Risky
+125,1,9,Cloud,CloudTrail,High,1,0,Engineer,Development,VPN,FALSE,1,35,Safe
+126,2,15,Database,Audit Logging,Low,1,0,Administrator,Production,TRUE,Internal,1,40,Safe
+127,2,10,Firewall,HTTPS Port,Medium,1,0,CI/CD,Production,TRUE,FALSE,1,50,Risky
+128,3,3,Firewall,HTTPS Port,Low,0,0,Administrator,Development,Internal,Disabled,1,30,Safe
+129,3,9,Endpoint,Firewall,Medium,0,1,Administrator,Production,Internal,Disabled,1,60,Risky
+130,1,4,Endpoint,Real Time Protection,High,0,1,Engineer,Development,Disabled,Enabled,1,45,Safe
+131,1,19,Cloud,Security Group,Medium,0,0,Engineer,Production,Disabled,AES128,1,65,Risky
+132,1,7,Database,Encryption,Low,1,0,Engineer,Staging,Disabled,Disabled,0,15,Safe
+133,1,3,Logging,System Logging,Medium,1,1,Administrator,Staging,Enabled,Internal,1,30,Safe
+134,1,9,Identity,Conditional Access,High,0,1,Engineer,Staging,TRUE,Internal,1,55,Risky
+135,2,7,Logging,Log Retention,Low,0,1,Engineer,Development,AES256,Disabled,1,25,Safe
+136,1,13,Firewall,SSH Port,Medium,0,0,CI/CD,Staging,FALSE,Disabled,1,50,Risky
+137,2,3,Cloud,CloudTrail,High,1,1,CI/CD,Staging,AES256,AES128,1,40,Safe
+138,3,4,Endpoint,Firewall,Critical,1,1,Engineer,Staging,TRUE,Internal,1,55,Risky
+139,1,3,Endpoint,Firewall,Low,1,0,CI/CD,Production,TRUE,FALSE,1,40,Safe
+140,2,5,Identity,MFA,Critical,1,1,Administrator,Development,VPN,FALSE,1,45,Safe
+141,3,12,Cloud,CloudTrail,High,0,1,CI/CD,Staging,Internal,Disabled,1,55,Risky
+142,3,7,Identity,Conditional Access,Low,1,1,Administrator,Production,VPN,Enabled,1,35,Safe
+143,2,9,Identity,Conditional Access,Medium,1,1,CI/CD,Production,VPN,TRUE,1,45,Safe
+144,2,2,Identity,MFA,Low,0,1,Administrator,Staging,VPN,Internal,1,35,Safe
+145,2,2,Logging,Log Integrity,Medium,0,0,Engineer,Staging,FALSE,Disabled,1,50,Risky
+146,3,18,Database,Remote Access,High,1,1,CI/CD,Development,VPN,Enabled,1,30,Safe
+147,1,3,Database,Encryption,Medium,1,1,Administrator,Development,Enabled,FALSE,1,20,Safe
+148,2,20,Firewall,RDP,High,0,0,Administrator,Production,Internal,FALSE,1,75,Risky
+149,1,10,Endpoint,Firewall,Critical,0,1,Engineer,Development,VPN,Enabled,1,60,Risky
+150,3,20,Identity,MFA,Low,0,1,Engineer,Development,VPN,Disabled,1,25,Safe
+151,2,4,Database,Remote Access,Low,0,1,Engineer,Production,Disabled,TRUE,1,50,Risky
+152,3,20,Cloud,Security Group,Critical,1,0,Administrator,Staging,Internal,TRUE,1,60,Risky
+153,3,19,Cloud,Security Group,Medium,1,1,Engineer,Staging,FALSE,TRUE,1,30,Safe
+154,1,12,Firewall,HTTPS Port,Medium,0,1,Administrator,Staging,Disabled,Public,1,45,Safe
+155,3,14,Database,Remote Access,Medium,1,1,CI/CD,Production,Enabled,Public,1,45,Safe
+156,1,18,Firewall,SSH Port,Critical,0,0,CI/CD,Production,Disabled,Disabled,0,80,Risky
+157,1,2,Logging,Log Integrity,High,1,0,CI/CD,Staging,AES256,Enabled,1,45,Safe
+158,3,17,Cloud,S3 Public Access,High,1,0,CI/CD,Staging,VPN,Public,1,45,Safe
+159,2,14,Cloud,CloudTrail,Low,1,0,Engineer,Development,FALSE,Public,1,15,Safe
+160,3,8,Logging,Log Retention,Critical,1,1,Administrator,Production,Disabled,Public,1,70,Risky
+161,3,19,Database,Remote Access,Medium,0,1,Engineer,Production,VPN,Disabled,1,60,Risky
+162,3,15,Cloud,CloudTrail,Low,0,1,CI/CD,Staging,AES256,Enabled,1,35,Safe
+163,3,9,Firewall,SSH Port,Low,0,1,Administrator,Production,Disabled,Enabled,1,50,Risky
+164,2,17,Logging,Log Integrity,Low,1,1,CI/CD,Staging,Disabled,FALSE,1,20,Safe
+165,1,6,Firewall,ICMP,High,1,1,Administrator,Development,Internal,FALSE,1,30,Safe
+166,2,1,Logging,Log Retention,Critical,0,0,Engineer,Development,Disabled,Internal,1,65,Risky
+167,1,15,Cloud,S3 Public Access,Medium,1,1,Engineer,Staging,VPN,AES128,1,30,Safe
+168,2,8,Cloud,S3 Public Access,High,0,1,Administrator,Production,AES256,FALSE,1,70,Risky
+169,2,12,Firewall,ICMP,High,1,1,CI/CD,Development,Disabled,Public,1,30,Safe
+170,2,5,Endpoint,Real Time Protection,Low,0,1,CI/CD,Production,Enabled,Internal,1,50,Risky
+171,2,17,Firewall,HTTPS Port,Low,0,0,CI/CD,Production,Enabled,FALSE,1,55,Risky
+172,2,8,Endpoint,Firewall,High,0,0,CI/CD,Development,Disabled,Public,1,50,Risky
+173,1,8,Identity,Password Length,Critical,0,1,Engineer,Production,FALSE,TRUE,1,85,Risky
+174,1,8,Identity,Password Length,Critical,0,1,Administrator,Development,AES256,Public,1,60,Risky
+175,1,14,Cloud,S3 Public Access,Critical,0,1,Engineer,Development,Disabled,Internal,1,60,Risky
+176,3,17,Database,Encryption,High,0,0,CI/CD,Development,Enabled,Enabled,0,40,Safe
+177,3,4,Endpoint,USB Access,High,0,0,Engineer,Staging,Disabled,AES128,1,60,Risky
+178,1,6,Firewall,RDP,Low,0,0,Engineer,Production,VPN,Public,1,55,Risky
+179,3,14,Database,Audit Logging,Low,1,0,CI/CD,Staging,VPN,Enabled,1,25,Safe
+180,1,4,Identity,MFA,Critical,1,0,CI/CD,Development,TRUE,Internal,1,50,Risky
+181,2,18,Identity,MFA,High,0,1,CI/CD,Staging,FALSE,Disabled,1,55,Risky
+182,2,16,Endpoint,Firewall,High,1,0,Administrator,Development,AES256,Disabled,1,35,Safe
+183,1,8,Identity,MFA,High,1,0,CI/CD,Development,VPN,Public,1,35,Safe
+184,1,17,Logging,System Logging,Critical,1,1,Administrator,Development,Internal,AES128,1,45,Safe
+185,3,1,Database,Remote Access,Critical,0,0,Engineer,Development,Internal,AES128,1,65,Risky
+186,1,14,Identity,MFA,High,1,1,Engineer,Production,AES256,AES128,1,55,Risky
+187,3,15,Cloud,IAM MFA,Medium,1,1,Administrator,Development,Enabled,AES128,1,20,Safe
+188,2,11,Identity,Conditional Access,Medium,1,1,Engineer,Staging,AES256,Enabled,1,30,Safe
+189,2,5,Logging,Log Retention,Low,1,1,CI/CD,Staging,TRUE,FALSE,1,20,Safe
+190,2,7,Endpoint,Real Time Protection,Critical,1,1,Engineer,Staging,AES256,FALSE,1,55,Risky
+191,3,12,Firewall,RDP,High,0,0,Engineer,Development,Disabled,AES128,1,50,Risky
+192,2,12,Identity,Password Length,Medium,1,1,Administrator,Development,Enabled,AES128,1,20,Safe
+193,3,19,Database,Remote Access,High,0,1,CI/CD,Staging,TRUE,FALSE,1,55,Risky
+194,1,10,Endpoint,USB Access,Critical,1,1,Administrator,Staging,VPN,Enabled,1,55,Risky
+195,2,19,Cloud,S3 Public Access,Low,1,1,Administrator,Staging,Internal,Public,1,20,Safe
+196,1,12,Database,Encryption,Critical,0,1,Engineer,Development,Disabled,Enabled,1,60,Risky
+197,2,13,Database,Remote Access,Critical,1,1,Administrator,Development,Disabled,AES128,1,45,Safe
+198,3,7,Cloud,IAM MFA,Medium,0,0,Administrator,Production,AES256,Disabled,1,65,Risky
+199,3,11,Identity,MFA,High,1,0,CI/CD,Development,VPN,Internal,1,35,Safe
+200,1,8,Logging,System Logging,Medium,0,0,CI/CD,Staging,AES256,Internal,1,50,Risky
+201,3,10,Cloud,IAM MFA,Medium,0,0,Administrator,Staging,AES256,Internal,1,50,Risky
+202,3,4,Firewall,RDP,Medium,1,1,CI/CD,Staging,Internal,AES128,1,30,Safe
+203,2,13,Firewall,RDP,High,1,1,Engineer,Production,Enabled,TRUE,1,55,Risky
+204,2,10,Identity,Password Length,Low,1,1,Administrator,Development,TRUE,TRUE,0,0,Safe
+205,2,12,Firewall,HTTPS Port,Low,1,1,Engineer,Staging,Disabled,AES128,1,20,Safe
+206,2,20,Database,Audit Logging,Medium,1,1,CI/CD,Staging,TRUE,TRUE,0,20,Safe
+207,2,17,Logging,Log Retention,Low,1,0,Engineer,Development,AES256,TRUE,1,15,Safe
+208,1,15,Endpoint,USB Access,High,1,0,CI/CD,Production,Enabled,Enabled,0,50,Risky
+209,1,12,Endpoint,Real Time Protection,Low,1,1,Engineer,Development,Disabled,TRUE,1,10,Safe
+210,2,5,Identity,Password Length,Critical,0,0,Administrator,Staging,TRUE,FALSE,1,75,Risky
+211,2,12,Database,Remote Access,High,1,1,CI/CD,Development,AES256,AES128,1,30,Safe
+212,1,12,Logging,Log Integrity,High,0,1,Engineer,Staging,FALSE,Public,1,55,Risky
+213,2,10,Endpoint,USB Access,High,0,0,Administrator,Staging,Disabled,TRUE,1,60,Risky
+214,1,8,Database,Encryption,Medium,0,0,Administrator,Development,Enabled,Public,1,40,Safe
+215,2,1,Cloud,IAM MFA,Critical,1,1,Engineer,Development,Internal,Disabled,1,45,Safe
+216,2,11,Firewall,ICMP,Medium,1,1,Administrator,Staging,FALSE,Disabled,1,30,Safe
+217,2,7,Identity,Conditional Access,High,0,0,Engineer,Development,TRUE,TRUE,0,40,Safe
+218,2,9,Identity,MFA,Critical,1,0,Engineer,Development,TRUE,Disabled,1,50,Risky
+219,2,3,Firewall,HTTPS Port,Critical,0,1,Administrator,Development,Disabled,Public,1,60,Risky
+220,2,16,Database,Remote Access,Low,0,1,Administrator,Development,AES256,FALSE,1,25,Safe
+221,3,12,Firewall,HTTPS Port,High,1,1,CI/CD,Development,Disabled,Internal,1,30,Safe
+222,3,15,Logging,System Logging,High,1,0,Administrator,Staging,Enabled,FALSE,1,45,Safe
+223,1,7,Firewall,ICMP,Low,0,0,Administrator,Development,Enabled,Enabled,0,20,Safe
+224,1,20,Logging,Log Integrity,High,1,0,Administrator,Production,Disabled,AES128,1,60,Risky
+225,2,6,Identity,Conditional Access,High,0,0,Administrator,Staging,AES256,AES128,1,60,Risky
+226,1,10,Identity,MFA,Medium,0,0,Engineer,Production,Disabled,TRUE,1,65,Risky
+227,3,14,Firewall,HTTPS Port,Medium,1,1,Administrator,Production,TRUE,AES128,1,45,Safe
+228,3,18,Identity,Password Length,Medium,1,1,CI/CD,Production,Enabled,TRUE,1,45,Safe
+229,2,13,Firewall,RDP,Medium,1,1,CI/CD,Production,FALSE,TRUE,1,45,Safe
+230,1,1,Identity,MFA,Medium,1,1,CI/CD,Staging,Enabled,Internal,1,30,Safe
+231,1,6,Database,Audit Logging,Critical,1,0,CI/CD,Development,TRUE,Enabled,1,50,Risky
+232,3,5,Logging,Log Integrity,High,0,1,Engineer,Staging,Internal,FALSE,1,55,Risky
+233,1,8,Identity,Conditional Access,High,1,1,Administrator,Staging,AES256,Enabled,1,40,Safe
+234,2,10,Identity,Conditional Access,Critical,1,0,CI/CD,Production,VPN,Enabled,1,75,Risky
+235,1,13,Database,Encryption,Low,1,0,Administrator,Development,TRUE,Internal,1,15,Safe
+236,2,7,Firewall,HTTPS Port,Critical,0,0,CI/CD,Development,FALSE,Public,1,65,Risky
+237,1,14,Database,Audit Logging,High,0,0,CI/CD,Development,FALSE,Public,1,50,Risky
+238,3,2,Identity,Conditional Access,Medium,0,0,CI/CD,Development,FALSE,AES128,1,40,Safe
+239,2,1,Database,Encryption,Medium,1,1,CI/CD,Staging,Enabled,TRUE,1,30,Safe
+240,2,6,Identity,Conditional Access,Critical,1,1,CI/CD,Staging,FALSE,Enabled,1,55,Risky
+241,1,8,Identity,Conditional Access,Low,0,0,CI/CD,Production,Disabled,TRUE,1,55,Risky
+242,1,6,Database,Remote Access,Critical,0,1,CI/CD,Production,VPN,TRUE,1,85,Risky
+243,2,2,Cloud,IAM MFA,Critical,1,1,Administrator,Staging,Enabled,Enabled,0,45,Safe
+244,3,4,Identity,MFA,Critical,1,0,Engineer,Production,Disabled,AES128,1,75,Risky
+245,1,15,Firewall,SSH Port,Medium,0,0,CI/CD,Production,FALSE,Public,1,65,Risky
+246,3,12,Endpoint,Firewall,Low,0,1,Administrator,Production,Internal,Public,1,50,Risky
+247,1,3,Identity,Password Length,High,1,1,CI/CD,Development,Internal,Enabled,1,30,Safe
+248,2,9,Cloud,CloudTrail,Medium,0,0,Engineer,Staging,Internal,AES128,1,50,Risky
+249,1,18,Endpoint,Firewall,Medium,1,1,Administrator,Development,FALSE,TRUE,1,20,Safe
+250,2,6,Endpoint,USB Access,Critical,0,0,Administrator,Staging,VPN,Public,1,75,Risky
+251,3,15,Endpoint,Real Time Protection,Medium,0,0,Engineer,Staging,Disabled,Public,1,50,Risky
+252,1,11,Logging,Log Integrity,High,1,0,CI/CD,Development,TRUE,AES128,1,35,Safe
+253,3,1,Logging,Log Integrity,Critical,0,1,Engineer,Development,VPN,FALSE,1,60,Risky
+254,3,8,Endpoint,Firewall,Low,1,0,Engineer,Staging,VPN,Enabled,1,25,Safe
+255,1,7,Database,Remote Access,Critical,1,1,CI/CD,Development,FALSE,AES128,1,45,Safe
+256,1,6,Logging,System Logging,Medium,0,1,Administrator,Development,Disabled,Enabled,1,35,Safe
+257,2,7,Identity,Password Length,Medium,0,0,Engineer,Staging,Enabled,Internal,1,50,Risky
+258,2,7,Firewall,SSH Port,Critical,1,0,Engineer,Production,AES256,Internal,1,75,Risky
+259,1,8,Database,Remote Access,Critical,1,0,CI/CD,Development,VPN,FALSE,1,50,Risky
+260,2,7,Identity,Password Length,Low,1,0,CI/CD,Staging,Internal,AES128,1,25,Safe
+261,3,7,Logging,Log Retention,High,0,1,Administrator,Development,TRUE,TRUE,0,35,Safe
+262,1,6,Identity,MFA,Low,1,0,Administrator,Development,Internal,Enabled,1,15,Safe
+263,2,8,Firewall,RDP,Medium,1,1,Administrator,Production,Internal,Internal,0,35,Safe
+264,3,9,Identity,Password Length,Critical,0,0,CI/CD,Development,Internal,FALSE,1,65,Risky
+265,1,15,Database,Audit Logging,Medium,1,0,Administrator,Staging,FALSE,Public,1,35,Safe
+266,2,5,Logging,System Logging,Critical,0,0,Administrator,Staging,Enabled,Internal,1,75,Risky
+267,1,12,Cloud,CloudTrail,Critical,1,0,CI/CD,Development,VPN,AES128,1,50,Risky
+268,1,14,Endpoint,USB Access,Medium,0,0,Engineer,Staging,FALSE,Disabled,1,50,Risky
+269,3,7,Endpoint,Firewall,Critical,1,1,Administrator,Development,AES256,Enabled,1,45,Safe
+270,1,14,Endpoint,USB Access,Low,1,1,Administrator,Staging,Disabled,AES128,1,20,Safe
+271,1,2,Firewall,RDP,Medium,1,1,CI/CD,Production,Enabled,AES128,1,45,Safe
+272,3,7,Cloud,IAM MFA,Medium,1,0,Engineer,Staging,Disabled,Enabled,1,35,Safe
+273,3,13,Logging,System Logging,Critical,0,1,Administrator,Staging,FALSE,Public,1,70,Risky
+274,1,3,Firewall,ICMP,Low,0,1,Engineer,Staging,Internal,FALSE,1,35,Safe
+275,3,15,Endpoint,Real Time Protection,Low,0,0,Administrator,Development,VPN,Public,1,30,Safe
+276,2,2,Firewall,SSH Port,High,1,1,Administrator,Development,Disabled,AES128,1,30,Safe
+277,3,14,Database,Encryption,Low,0,1,Administrator,Production,Internal,Enabled,1,50,Risky
+278,1,16,Database,Audit Logging,Low,0,0,CI/CD,Production,FALSE,Disabled,1,55,Risky
+279,2,20,Identity,Password Length,High,1,1,CI/CD,Development,TRUE,Disabled,1,30,Safe
+280,1,4,Firewall,HTTPS Port,Low,0,1,Administrator,Development,Disabled,AES128,1,25,Safe
+281,3,14,Database,Audit Logging,Low,1,0,Administrator,Staging,AES256,FALSE,1,25,Safe
+282,1,6,Firewall,RDP,Medium,0,1,Engineer,Production,AES256,Internal,1,60,Risky
+283,1,13,Database,Audit Logging,Medium,0,1,Engineer,Staging,AES256,Public,1,45,Safe
+284,1,7,Endpoint,USB Access,Critical,0,0,Engineer,Production,AES256,Public,1,90,Risky
+285,1,5,Identity,Password Length,Medium,1,0,Engineer,Production,Enabled,Internal,1,50,Risky
+286,1,20,Endpoint,Firewall,Critical,0,1,Engineer,Development,Disabled,Enabled,1,60,Risky
+287,1,1,Firewall,ICMP,Critical,0,1,Engineer,Development,VPN,FALSE,1,60,Risky
+288,1,20,Firewall,SSH Port,Medium,0,1,CI/CD,Development,AES256,AES128,1,35,Safe
+289,2,18,Database,Remote Access,Critical,1,0,Engineer,Production,Internal,Internal,0,65,Risky
+290,1,12,Firewall,SSH Port,Medium,1,0,CI/CD,Staging,Enabled,Public,1,35,Safe
+291,3,9,Endpoint,Firewall,High,0,0,CI/CD,Production,AES256,FALSE,1,75,Risky
+292,1,13,Cloud,S3 Public Access,High,0,1,CI/CD,Production,Internal,Internal,0,60,Risky
+293,2,2,Identity,Password Length,Critical,0,0,Administrator,Production,FALSE,TRUE,1,90,Risky
+294,2,10,Database,Audit Logging,Low,0,1,Administrator,Production,Enabled,Internal,1,50,Risky
+295,3,7,Database,Audit Logging,Low,1,1,Engineer,Production,TRUE,Disabled,1,35,Safe
+296,1,11,Endpoint,USB Access,Medium,1,1,CI/CD,Development,VPN,Disabled,1,20,Safe
+297,1,17,Database,Audit Logging,Critical,1,0,Administrator,Staging,TRUE,TRUE,0,50,Risky
+298,3,16,Firewall,RDP,Medium,1,0,Administrator,Production,Disabled,Enabled,1,50,Risky
+299,1,1,Identity,Password Length,Critical,1,1,Engineer,Development,Enabled,Public,1,45,Safe
+300,3,1,Endpoint,Firewall,Medium,0,1,CI/CD,Development,FALSE,Public,1,35,Safe
+301,3,12,Database,Remote Access,High,0,1,Engineer,Production,Disabled,FALSE,1,70,Risky
+302,3,6,Identity,MFA,Low,1,1,CI/CD,Staging,FALSE,FALSE,0,10,Safe
+303,3,8,Logging,Log Retention,High,0,1,Engineer,Production,TRUE,Public,1,70,Risky
+304,3,19,Database,Encryption,Low,0,0,CI/CD,Development,Enabled,Disabled,1,30,Safe
+305,1,16,Endpoint,Real Time Protection,Low,0,1,CI/CD,Production,Disabled,AES128,1,50,Risky
+306,1,16,Database,Remote Access,Low,1,1,Engineer,Staging,VPN,AES128,1,20,Safe
+307,1,11,Cloud,CloudTrail,Critical,0,1,Engineer,Production,VPN,Public,1,85,Risky
+308,3,17,Identity,Conditional Access,High,0,0,CI/CD,Staging,AES256,Enabled,1,60,Risky
+309,2,2,Logging,Log Integrity,Medium,1,1,Engineer,Production,Enabled,TRUE,1,45,Safe
+310,2,8,Logging,System Logging,Low,0,0,CI/CD,Production,AES256,Internal,1,55,Risky
+311,1,1,Firewall,ICMP,Low,0,1,CI/CD,Production,FALSE,Disabled,1,50,Risky
+312,2,3,Database,Audit Logging,Low,1,1,CI/CD,Development,VPN,AES128,1,10,Safe
+313,1,13,Cloud,Security Group,Medium,1,1,CI/CD,Staging,AES256,FALSE,1,30,Safe
+314,3,15,Identity,Conditional Access,Critical,1,0,CI/CD,Staging,Disabled,Internal,1,60,Risky
+315,2,3,Endpoint,USB Access,High,1,0,CI/CD,Staging,Internal,AES128,1,45,Safe
+316,2,4,Logging,Log Retention,Critical,1,0,CI/CD,Staging,VPN,TRUE,1,60,Risky
+317,1,9,Logging,Log Retention,High,0,0,CI/CD,Development,Enabled,FALSE,1,50,Risky
+318,1,5,Logging,System Logging,High,1,1,Administrator,Development,TRUE,TRUE,0,20,Safe
+319,2,5,Firewall,RDP,Medium,1,1,Administrator,Staging,VPN,Public,1,30,Safe
+320,2,19,Identity,MFA,Medium,0,0,Administrator,Development,AES256,Internal,1,40,Safe
+321,3,18,Identity,MFA,High,1,0,Engineer,Staging,FALSE,AES128,1,45,Safe
+322,3,4,Cloud,Security Group,High,1,1,Administrator,Production,AES256,FALSE,1,55,Risky
+323,1,5,Identity,Password Length,Low,1,1,Administrator,Production,TRUE,Internal,1,35,Safe
+324,1,8,Firewall,ICMP,High,1,0,Administrator,Development,AES256,Public,1,35,Safe
+325,2,16,Endpoint,USB Access,High,0,1,Engineer,Development,FALSE,Disabled,1,45,Safe
+326,2,2,Database,Encryption,Low,0,1,Administrator,Production,Disabled,Enabled,1,50,Risky
+327,2,12,Database,Remote Access,Critical,0,1,Engineer,Development,TRUE,AES128,1,60,Risky
+328,3,18,Database,Audit Logging,Medium,1,0,Administrator,Development,TRUE,FALSE,1,25,Safe
+329,2,20,Logging,Log Retention,Critical,1,0,Administrator,Production,AES256,AES128,1,75,Risky
+330,1,10,Endpoint,USB Access,Low,0,0,Engineer,Production,Enabled,Internal,1,55,Risky
+331,2,17,Identity,Conditional Access,Critical,0,1,Engineer,Development,AES256,Enabled,1,60,Risky
+332,2,3,Database,Audit Logging,Medium,0,1,Administrator,Production,AES256,Enabled,1,60,Risky
+333,1,6,Endpoint,Real Time Protection,Medium,1,1,Administrator,Production,TRUE,Internal,1,45,Safe
+334,3,10,Cloud,S3 Public Access,Low,0,0,CI/CD,Production,FALSE,Internal,1,55,Risky
+335,1,8,Endpoint,Real Time Protection,Critical,1,0,Engineer,Staging,Internal,FALSE,1,60,Risky
+336,3,14,Logging,Log Retention,Medium,0,1,CI/CD,Staging,Internal,TRUE,1,45,Safe
+337,1,11,Logging,Log Retention,High,0,1,Engineer,Development,Internal,FALSE,1,45,Safe
+338,3,12,Database,Audit Logging,High,1,1,CI/CD,Development,Disabled,Enabled,1,30,Safe
+339,2,3,Logging,System Logging,Low,0,1,Engineer,Staging,Enabled,Enabled,0,25,Safe
+340,1,3,Cloud,Security Group,Medium,1,0,Engineer,Production,Disabled,Enabled,1,50,Risky
+341,2,6,Cloud,CloudTrail,Critical,1,0,CI/CD,Production,Disabled,Enabled,1,75,Risky
+342,3,12,Logging,Log Retention,Medium,0,1,Administrator,Production,Internal,Disabled,1,60,Risky
+343,2,16,Logging,Log Integrity,Medium,0,1,Engineer,Staging,VPN,AES128,1,45,Safe
+344,1,9,Database,Audit Logging,Low,0,0,Administrator,Staging,FALSE,TRUE,1,40,Safe
+345,2,12,Identity,MFA,Medium,1,0,Administrator,Development,AES256,AES128,1,25,Safe
+346,1,5,Endpoint,Firewall,Critical,0,1,Engineer,Development,TRUE,TRUE,0,50,Risky
+347,1,9,Logging,System Logging,High,0,0,Engineer,Production,Enabled,Disabled,1,75,Risky
+348,1,19,Endpoint,Real Time Protection,Medium,1,1,CI/CD,Production,FALSE,TRUE,1,45,Safe
+349,2,14,Logging,Log Integrity,Low,1,0,Administrator,Production,TRUE,TRUE,0,30,Safe
+350,1,3,Endpoint,Real Time Protection,Critical,0,1,CI/CD,Production,TRUE,Internal,1,85,Risky
+351,2,1,Logging,Log Integrity,High,0,0,Administrator,Staging,Internal,Internal,0,50,Risky
+352,1,7,Identity,Password Length,Low,1,1,Administrator,Production,Internal,Internal,0,25,Safe
+353,3,18,Logging,Log Retention,Medium,0,0,Engineer,Development,VPN,TRUE,1,40,Safe
+354,3,16,Database,Audit Logging,Low,1,1,CI/CD,Production,Internal,TRUE,1,35,Safe
+355,2,9,Database,Remote Access,Medium,1,0,Engineer,Staging,AES256,Disabled,1,35,Safe
+356,3,5,Identity,Password Length,Critical,1,0,Administrator,Staging,VPN,Enabled,1,60,Risky
+357,1,2,Identity,MFA,High,0,1,Engineer,Staging,Enabled,Public,1,55,Risky
+358,2,12,Cloud,Security Group,Critical,1,1,Administrator,Production,VPN,Public,1,70,Risky
+359,3,18,Cloud,IAM MFA,Low,0,0,Administrator,Staging,FALSE,Internal,1,40,Safe
+360,2,12,Cloud,Security Group,Critical,1,1,CI/CD,Production,Disabled,Public,1,70,Risky
+361,2,1,Logging,Log Retention,High,1,1,Engineer,Production,Enabled,Enabled,0,45,Safe
+362,2,4,Logging,Log Integrity,Critical,1,1,Engineer,Development,TRUE,AES128,1,45,Safe
+363,1,14,Logging,System Logging,Medium,0,0,Administrator,Production,Internal,Disabled,1,65,Risky
+364,3,2,Cloud,CloudTrail,Critical,1,1,CI/CD,Production,VPN,Public,1,70,Risky
+365,3,5,Firewall,RDP,Low,1,1,Engineer,Production,FALSE,Internal,1,35,Safe
+366,3,20,Database,Remote Access,Medium,0,1,Administrator,Development,AES256,AES128,1,35,Safe
+367,2,9,Logging,Log Integrity,Low,1,1,Administrator,Staging,AES256,FALSE,1,20,Safe
+368,3,14,Cloud,Security Group,Critical,1,0,CI/CD,Staging,AES256,FALSE,1,60,Risky
+369,3,12,Firewall,SSH Port,Medium,0,0,Engineer,Production,Enabled,TRUE,1,65,Risky
+370,2,13,Identity,MFA,Medium,0,0,Engineer,Production,TRUE,Internal,1,65,Risky
+371,3,17,Logging,Log Retention,Critical,1,1,Engineer,Development,FALSE,TRUE,1,45,Safe
+372,1,18,Logging,Log Integrity,Medium,0,0,Administrator,Development,TRUE,Disabled,1,40,Safe
+373,2,18,Identity,MFA,Medium,1,1,Administrator,Development,TRUE,Enabled,1,20,Safe
+374,3,11,Identity,Conditional Access,Critical,0,1,Engineer,Development,Enabled,Internal,1,60,Risky
+375,1,2,Cloud,S3 Public Access,Critical,0,1,CI/CD,Production,AES256,FALSE,1,85,Risky
+376,1,5,Database,Encryption,High,0,1,CI/CD,Development,VPN,AES128,1,45,Safe
+377,2,12,Logging,Log Integrity,Medium,1,0,Administrator,Production,FALSE,Enabled,1,50,Risky
+378,3,15,Cloud,CloudTrail,Medium,0,1,CI/CD,Development,AES256,Internal,1,35,Safe
+379,3,10,Cloud,S3 Public Access,Medium,1,0,CI/CD,Development,TRUE,AES128,1,25,Safe
+380,2,14,Logging,Log Integrity,Low,1,1,Engineer,Staging,Internal,TRUE,1,20,Safe
+381,3,9,Cloud,Security Group,Critical,1,1,Administrator,Production,VPN,FALSE,1,70,Risky
+382,3,15,Cloud,IAM MFA,Low,0,1,CI/CD,Staging,AES256,Internal,1,35,Safe
+383,3,15,Endpoint,USB Access,Critical,0,0,Engineer,Production,Enabled,TRUE,1,90,Risky
+384,3,6,Logging,Log Retention,High,1,1,CI/CD,Production,FALSE,AES128,1,55,Risky
+385,1,18,Endpoint,USB Access,Medium,0,1,Engineer,Staging,TRUE,Enabled,1,45,Safe
+386,1,18,Firewall,HTTPS Port,Medium,0,1,Engineer,Staging,FALSE,Enabled,1,45,Safe
+387,2,1,Logging,System Logging,Low,1,1,CI/CD,Staging,AES256,Internal,1,20,Safe
+388,2,6,Endpoint,USB Access,Low,1,0,CI/CD,Development,Internal,FALSE,1,15,Safe
+389,1,10,Identity,MFA,Critical,0,1,Engineer,Development,Disabled,AES128,1,60,Risky
+390,1,16,Logging,Log Integrity,High,1,1,Engineer,Production,Internal,Disabled,1,55,Risky
+391,2,12,Firewall,ICMP,High,0,0,Engineer,Staging,Enabled,Internal,1,60,Risky
+392,3,14,Endpoint,USB Access,Medium,1,1,Engineer,Staging,VPN,Enabled,1,30,Safe
+393,2,9,Database,Encryption,Medium,1,1,CI/CD,Development,AES256,Public,1,20,Safe
+394,3,16,Database,Audit Logging,Critical,0,0,CI/CD,Development,VPN,AES128,1,65,Risky
+395,3,9,Database,Encryption,High,0,1,CI/CD,Staging,Disabled,FALSE,1,55,Risky
+396,1,19,Identity,Conditional Access,High,1,1,Administrator,Staging,Enabled,Enabled,0,30,Safe
+397,3,7,Cloud,CloudTrail,Critical,0,0,Engineer,Development,TRUE,FALSE,1,65,Risky
+398,3,11,Logging,Log Retention,Medium,1,1,CI/CD,Development,AES256,Internal,1,20,Safe
+399,1,5,Cloud,IAM MFA,High,1,1,Administrator,Production,AES256,Public,1,55,Risky
+400,2,16,Endpoint,Real Time Protection,High,0,1,Administrator,Development,FALSE,AES128,1,45,Safe
+401,3,13,Firewall,ICMP,Low,1,0,CI/CD,Staging,AES256,FALSE,1,25,Safe
+402,1,1,Database,Encryption,Critical,1,0,Administrator,Production,Enabled,AES128,1,75,Risky
+403,1,15,Logging,Log Integrity,Low,0,1,Engineer,Staging,VPN,Public,1,35,Safe
+404,1,6,Cloud,CloudTrail,High,0,0,CI/CD,Production,Internal,Enabled,1,75,Risky
+405,1,9,Database,Audit Logging,Low,1,1,Engineer,Development,AES256,FALSE,1,10,Safe
+406,2,15,Firewall,ICMP,High,0,1,Administrator,Development,TRUE,Internal,1,45,Safe
+407,3,8,Identity,MFA,Low,1,0,CI/CD,Staging,Disabled,Internal,1,25,Safe
+408,1,2,Database,Audit Logging,High,1,0,CI/CD,Development,AES256,Disabled,1,35,Safe
+409,1,18,Database,Audit Logging,Critical,0,1,Administrator,Production,FALSE,TRUE,1,85,Risky
+410,2,16,Logging,Log Retention,Critical,0,1,Administrator,Staging,Enabled,FALSE,1,70,Risky
+411,1,6,Cloud,CloudTrail,Critical,1,1,Administrator,Production,Enabled,AES128,1,70,Risky
+412,1,16,Identity,Password Length,Low,0,1,CI/CD,Development,TRUE,Public,1,25,Safe
+413,1,15,Logging,System Logging,Critical,0,1,Engineer,Production,VPN,Public,1,85,Risky
+414,2,6,Identity,Conditional Access,Medium,0,0,Administrator,Staging,Disabled,Disabled,0,40,Safe
+415,3,11,Firewall,SSH Port,Medium,0,0,Administrator,Staging,VPN,Enabled,1,50,Risky
+416,2,11,Database,Remote Access,Low,0,1,Administrator,Staging,AES256,Public,1,35,Safe
+417,2,11,Logging,System Logging,Low,1,0,Engineer,Production,Enabled,FALSE,1,40,Safe
+418,2,8,Database,Remote Access,Low,0,0,CI/CD,Staging,VPN,Disabled,1,40,Safe
+419,3,19,Firewall,ICMP,High,1,1,Administrator,Development,FALSE,TRUE,1,30,Safe
+420,3,17,Endpoint,USB Access,Medium,0,0,Engineer,Production,TRUE,AES128,1,65,Risky
+421,2,16,Identity,Password Length,Low,0,1,CI/CD,Development,Enabled,Internal,1,25,Safe
+422,2,5,Logging,Log Retention,Critical,1,0,Administrator,Development,Enabled,Internal,1,50,Risky
+423,2,15,Firewall,RDP,Critical,1,1,CI/CD,Development,VPN,Disabled,1,45,Safe
+424,3,8,Identity,MFA,Medium,0,1,Administrator,Staging,Disabled,Public,1,45,Safe
+425,1,17,Identity,MFA,Low,1,0,CI/CD,Production,Disabled,AES128,1,40,Safe
+426,2,13,Database,Encryption,Medium,0,0,Engineer,Production,Disabled,FALSE,1,65,Risky
+427,2,2,Firewall,HTTPS Port,Medium,0,0,Administrator,Development,TRUE,Enabled,1,40,Safe
+428,1,16,Logging,Log Integrity,Critical,0,0,Engineer,Staging,FALSE,AES128,1,75,Risky
+429,2,9,Cloud,Security Group,Critical,1,0,CI/CD,Development,Internal,Enabled,1,50,Risky
+430,2,14,Firewall,SSH Port,Critical,0,1,CI/CD,Development,Enabled,Disabled,1,60,Risky
+431,2,18,Identity,Password Length,Critical,0,0,Engineer,Staging,Internal,Disabled,1,75,Risky
+432,1,10,Logging,Log Retention,Critical,1,1,Engineer,Development,Internal,TRUE,1,45,Safe
+433,2,11,Firewall,ICMP,Low,1,0,Engineer,Production,TRUE,Internal,1,40,Safe
+434,2,14,Firewall,SSH Port,Low,0,1,Administrator,Development,Disabled,TRUE,1,25,Safe
+435,2,2,Logging,Log Integrity,Low,0,0,Administrator,Production,FALSE,Internal,1,55,Risky
+436,2,8,Cloud,CloudTrail,Critical,0,1,Engineer,Production,Enabled,Internal,1,85,Risky
+437,3,5,Database,Remote Access,Critical,0,0,CI/CD,Development,FALSE,TRUE,1,65,Risky
+438,1,6,Endpoint,USB Access,Low,1,0,CI/CD,Development,Internal,TRUE,1,15,Safe
+439,2,14,Endpoint,Real Time Protection,Low,1,0,Administrator,Staging,AES256,AES128,1,25,Safe
+440,2,5,Database,Audit Logging,Medium,0,0,Administrator,Staging,FALSE,TRUE,1,50,Risky
+441,3,9,Database,Encryption,High,0,0,CI/CD,Development,VPN,Public,1,50,Risky
+442,1,6,Database,Remote Access,High,1,1,CI/CD,Development,VPN,AES128,1,30,Safe
+443,1,10,Database,Remote Access,Medium,1,0,Engineer,Staging,AES256,FALSE,1,35,Safe
+444,2,18,Endpoint,Real Time Protection,Low,0,1,Administrator,Development,Disabled,Enabled,1,25,Safe
+445,1,16,Endpoint,Real Time Protection,High,1,0,Engineer,Staging,VPN,FALSE,1,45,Safe
+446,3,2,Endpoint,Firewall,High,0,1,Engineer,Production,Disabled,FALSE,1,70,Risky
+447,1,9,Identity,Conditional Access,High,0,1,Engineer,Staging,VPN,FALSE,1,55,Risky
+448,2,7,Database,Encryption,Medium,0,1,Engineer,Development,Disabled,Disabled,0,25,Safe
+449,2,9,Database,Remote Access,Low,1,1,CI/CD,Production,TRUE,AES128,1,35,Safe
+450,2,11,Firewall,SSH Port,Critical,1,1,Administrator,Development,Enabled,Enabled,0,35,Safe
+451,1,9,Database,Audit Logging,Low,1,0,CI/CD,Production,FALSE,Public,1,40,Safe
+452,3,15,Firewall,HTTPS Port,Critical,0,0,CI/CD,Development,Internal,Internal,0,55,Risky
+453,3,18,Endpoint,Firewall,Low,1,0,Administrator,Staging,Enabled,Internal,1,25,Safe
+454,2,20,Logging,System Logging,Low,0,0,CI/CD,Staging,Internal,Internal,0,30,Safe
+455,1,15,Logging,System Logging,Medium,1,1,Engineer,Development,VPN,Internal,1,20,Safe
+456,2,15,Firewall,ICMP,Medium,0,1,Administrator,Development,FALSE,Public,1,35,Safe
+457,1,15,Database,Audit Logging,Medium,0,0,Engineer,Production,Internal,FALSE,1,65,Risky
+458,3,4,Firewall,SSH Port,Medium,0,1,Engineer,Production,TRUE,Enabled,1,60,Risky
+459,3,18,Logging,System Logging,High,0,1,Engineer,Staging,VPN,Enabled,1,55,Risky
+460,2,3,Database,Audit Logging,Medium,1,0,Administrator,Production,VPN,Disabled,1,50,Risky
+461,1,15,Endpoint,Firewall,Medium,0,1,Engineer,Development,Internal,AES128,1,35,Safe
+462,2,6,Logging,Log Integrity,Critical,1,1,Administrator,Staging,Enabled,AES128,1,55,Risky
+463,2,19,Logging,Log Integrity,Medium,1,1,Engineer,Staging,FALSE,AES128,1,30,Safe
+464,3,2,Identity,Password Length,Medium,0,0,CI/CD,Staging,Disabled,TRUE,1,50,Risky
+465,3,15,Cloud,CloudTrail,High,1,1,CI/CD,Staging,VPN,Internal,1,40,Safe
+466,2,12,Logging,System Logging,Medium,1,1,CI/CD,Staging,Disabled,AES128,1,30,Safe
+467,2,19,Endpoint,Real Time Protection,Low,0,1,CI/CD,Development,AES256,FALSE,1,25,Safe
+468,2,13,Firewall,RDP,Low,0,1,CI/CD,Staging,Disabled,Enabled,1,35,Safe
+469,2,4,Logging,Log Retention,Medium,1,0,CI/CD,Development,Internal,TRUE,1,25,Safe
+470,3,4,Logging,Log Integrity,Low,0,1,Engineer,Staging,AES256,Internal,1,35,Safe
+471,2,16,Identity,Conditional Access,High,1,1,Administrator,Production,VPN,Enabled,1,55,Risky
+472,2,16,Identity,MFA,High,0,0,Engineer,Staging,TRUE,TRUE,0,50,Risky
+473,2,20,Cloud,S3 Public Access,High,0,0,CI/CD,Development,VPN,FALSE,1,50,Risky
+474,2,7,Identity,Conditional Access,Medium,1,1,Engineer,Development,Disabled,TRUE,1,20,Safe
+475,1,2,Logging,Log Integrity,Critical,1,0,CI/CD,Production,Enabled,Internal,1,75,Risky
+476,2,16,Cloud,CloudTrail,Critical,1,0,Administrator,Staging,Enabled,AES128,1,60,Risky
+477,3,17,Logging,System Logging,High,1,0,Administrator,Staging,Internal,Disabled,1,45,Safe
+478,1,5,Identity,Password Length,Low,0,1,Engineer,Production,FALSE,Internal,1,50,Risky
+479,3,8,Identity,Password Length,Low,0,1,Administrator,Production,FALSE,Public,1,50,Risky
+480,2,4,Cloud,IAM MFA,High,1,0,Engineer,Staging,VPN,FALSE,1,45,Safe
+481,2,12,Identity,Password Length,High,1,0,Administrator,Development,Internal,Disabled,1,35,Safe
+482,3,2,Endpoint,USB Access,Low,1,0,Administrator,Development,FALSE,Public,1,15,Safe
+483,2,8,Logging,Log Integrity,High,0,1,CI/CD,Staging,FALSE,Disabled,1,55,Risky
+484,1,20,Cloud,Security Group,Low,0,0,Administrator,Development,VPN,FALSE,1,30,Safe
+485,3,3,Endpoint,USB Access,High,0,1,Administrator,Production,TRUE,TRUE,0,60,Risky
+486,2,15,Cloud,S3 Public Access,Critical,0,0,CI/CD,Development,VPN,AES128,1,65,Risky
+487,1,12,Firewall,ICMP,Medium,0,1,Engineer,Production,Enabled,TRUE,1,60,Risky
+488,2,12,Identity,MFA,High,1,1,Administrator,Production,Internal,TRUE,1,55,Risky
+489,3,3,Identity,Password Length,Medium,1,1,CI/CD,Staging,VPN,FALSE,1,30,Safe
+490,3,16,Endpoint,Firewall,High,0,0,CI/CD,Development,Internal,Public,1,50,Risky
+491,2,6,Endpoint,USB Access,Medium,1,1,Engineer,Production,FALSE,Enabled,1,45,Safe
+492,3,10,Identity,MFA,Low,1,0,Administrator,Production,AES256,Disabled,1,40,Safe
+493,2,18,Firewall,HTTPS Port,Medium,0,1,Engineer,Staging,Internal,FALSE,1,45,Safe
+494,2,17,Logging,System Logging,High,1,0,Administrator,Production,Disabled,Enabled,1,60,Risky
+495,3,19,Identity,Conditional Access,High,0,0,Engineer,Development,FALSE,TRUE,1,50,Risky
+496,2,6,Logging,Log Integrity,Low,0,1,Administrator,Staging,Enabled,Internal,1,35,Safe
+497,2,7,Identity,MFA,Low,0,1,Administrator,Production,Enabled,TRUE,1,50,Risky
+498,3,11,Cloud,IAM MFA,Medium,0,1,Engineer,Development,Disabled,Disabled,0,25,Safe
+499,1,18,Logging,Log Retention,High,0,1,Administrator,Development,Disabled,Disabled,0,35,Safe
+500,2,17,Endpoint,USB Access,Medium,0,0,Administrator,Development,AES256,AES128,1,40,Safe
