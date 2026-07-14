@@ -117,7 +117,7 @@ Main tables include:
 
 ## 📸 Screenshots
 
-*(Include screenshots for)*
+
 - Login
 - Dashboard
 - Projects
