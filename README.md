@@ -121,15 +121,35 @@ Main tables include:
 
 
 - Login
-- Dashboard
-- Projects
-- Digital Twin
-- Risk Analysis
-- Recommendations
-- Attack Graph
-- Change Requests
-- AI Copilot
+  <img width="727" height="657" alt="image" src="https://github.com/user-attachments/assets/9794f21b-a8de-4322-812c-5f086a535f7a" />
 
+- Dashboard
+  <img width="1917" height="906" alt="image" src="https://github.com/user-attachments/assets/ebf37e5c-342d-48a6-bc6e-c549a4222614" />
+- Projects
+  <img width="1910" height="901" alt="image" src="https://github.com/user-attachments/assets/5004b34a-b54e-49ad-884a-257831f481d9" />
+
+- Digital Twin
+  <img width="1611" height="897" alt="image" src="https://github.com/user-attachments/assets/eb52e09f-8159-46ac-b7a7-b61c698b1879" />
+
+- Risk Analysis
+  <img width="1612" height="885" alt="image" src="https://github.com/user-attachments/assets/c23b494d-669f-4e08-8f04-ccbfa7145f83" />
+
+- Recommendations
+  <img width="1616" height="880" alt="image" src="https://github.com/user-attachments/assets/3a586f76-11b7-4e09-ac0d-b72736137f20" />
+
+- Attack Graph
+  <img width="1620" height="885" alt="image" src="https://github.com/user-attachments/assets/4c2830a2-2f00-48c9-82b9-32eae085bbe6" />
+
+- Change Requests
+  <img width="1602" height="895" alt="image" src="https://github.com/user-attachments/assets/027e6a79-bd39-483a-8e6e-d4b6967b66e0" />
+  <img width="1600" height="885" alt="image" src="https://github.com/user-attachments/assets/4c18c97a-479b-4267-86d1-7f7f34d8849a" />
+
+
+- AI Copilot
+  <img width="1586" height="716" alt="image" src="https://github.com/user-attachments/assets/eb22697f-e8e1-4bc5-b94b-61d3ff5de3f0" />
+
+
+       
 ---
 
 ## ⚙️ Installation
