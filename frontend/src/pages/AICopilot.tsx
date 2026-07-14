@@ -73,7 +73,7 @@ export default function AICopilotPage() {
             </div>
             <div>
               <p className="text-sm font-semibold text-text leading-tight">Security Copilot</p>
-              <p className="text-xs text-safe leading-tight">Online \u00b7 Connected to /copilot/chat</p>
+              <p className="text-xs text-safe leading-tight">Online · Connected to /copilot/ask</p>
             </div>
           </div>
 
@@ -86,7 +86,7 @@ export default function AICopilotPage() {
                   </div>
                 )}
                 <div
-                  className={`rounded-xl px-3.5 py-2.5 text-sm max-w-[75%] leading-relaxed ${
+                  className={`rounded-xl px-3.5 py-2.5 text-sm max-w-[75%] leading-relaxed whitespace-pre-wrap ${
                     m.role === 'user'
                       ? 'bg-accent text-white rounded-br-sm'
                       : 'bg-surface-hover text-text border border-border rounded-bl-sm'

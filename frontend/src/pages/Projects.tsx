@@ -7,8 +7,10 @@ import ErrorBanner from '@/components/ui/ErrorBanner';
 import Badge from '@/components/ui/Badge';
 import { getProjects, getBaseline } from '@/api/services';
 import type { Project, BaselineControl } from '@/types';
+import { useAuth } from '@/context/AuthContext';
 
 export default function Projects() {
+  const { user } = useAuth();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -24,7 +26,7 @@ export default function Projects() {
       setLoading(true);
       setError(null);
       try {
-        const data = await getProjects();
+        const data = await getProjects(user!.id);
         if (!cancelled) setProjects(data);
       } catch (err) {
         if (!cancelled) setError((err as { message?: string })?.message || 'Failed to load projects.');

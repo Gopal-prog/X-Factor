@@ -10,7 +10,8 @@ from models import (
     RiskAnalysis,
     Recommendation,
     BaselineControl,
-    ChangeRequest
+    ChangeRequest,
+    Project
 )
 
 router = APIRouter(
@@ -21,7 +22,7 @@ router = APIRouter(
 @router.get("/summary")
 def dashboard_summary(db: Session = Depends(get_db)):
 
-    total_projects = db.query(DigitalTwin.project_id).distinct().count()
+    total_projects = db.query(Project).count()
 
     total_twins = db.query(DigitalTwin).count()
 

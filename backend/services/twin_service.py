@@ -95,3 +95,48 @@ def update_twin_control(
     db.refresh(twin_control)
 
     return twin_control
+
+def reset_twin_to_baseline(twin_id: int, db: Session):
+    from models import BaselineControl, DriftDetection
+    twin = db.query(DigitalTwin).filter(DigitalTwin.twin_id == twin_id).first()
+    if not twin:
+        return None
+
+    drifts = db.query(DriftDetection).filter(DriftDetection.twin_id == twin_id).all()
+    for drift in drifts:
+        twin_control = db.query(TwinControl).filter(
+            TwinControl.twin_id == twin_id,
+            TwinControl.control_id == drift.control_id
+        ).first()
+        baseline = db.query(BaselineControl).filter(
+            BaselineControl.control_id == drift.control_id
+        ).first()
+        
+        if twin_control and baseline:
+            twin_control.new_value = baseline.parameter_value
+            
+        db.delete(drift)
+        
+    twin.status = "Approved"
+    twin.risk_score_after = twin.risk_score_before
+    db.commit()
+    return twin
+
+def bulk_update_twin_controls(
+    twin_id: int,
+    updates: list,
+    db: Session
+):
+    for update in updates:
+        twin_control = db.query(TwinControl).filter(
+            TwinControl.twin_id == twin_id,
+            TwinControl.control_id == update.control_id
+        ).first()
+
+        if twin_control:
+            twin_control.new_value = update.new_value
+
+    db.commit()
+    
+    twin = db.query(DigitalTwin).filter(DigitalTwin.twin_id == twin_id).first()
+    return twin

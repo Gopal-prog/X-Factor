@@ -35,8 +35,8 @@ export default function Dashboard() {
 
   useEffect(() => {
     let cancelled = false;
-    // Immediately call all dashboard endpoints in parallel on mount.
-    (async () => {
+    
+    const fetchDashboardData = async () => {
       setLoading(true);
       setError(null);
       try {
@@ -58,9 +58,38 @@ export default function Dashboard() {
       } finally {
         if (!cancelled) setLoading(false);
       }
-    })();
+    };
+    
+    fetchDashboardData();
+
+    // Feature 6: WebSockets for Live Dashboard Updates
+    let ws: WebSocket;
+    try {
+      ws = new WebSocket('ws://127.0.0.1:8000/ws/dashboard');
+      
+      ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type === 'RISK_UPDATE') {
+            console.log('Received Live Risk Update from Backend. Refreshing dashboard...', data);
+            // Fetch fresh data when risk is recalculated
+            fetchDashboardData();
+          }
+        } catch (e) {
+          console.error('WebSocket message parsing error:', e);
+        }
+      };
+      
+      ws.onopen = () => console.log('WebSocket connected to SecureTwin Backend.');
+      ws.onclose = () => console.log('WebSocket disconnected.');
+      
+    } catch (err) {
+      console.warn('Failed to connect to websocket:', err);
+    }
+
     return () => {
       cancelled = true;
+      if (ws) ws.close();
     };
   }, []);
 

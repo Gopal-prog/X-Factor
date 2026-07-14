@@ -95,8 +95,12 @@ export default function RiskAnalysisPage() {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center py-4">
               <RiskGauge value={risk.overall_risk} label="Overall Risk" />
               <RiskGauge value={risk.business_criticality} label="Business Criticality" />
-              <RiskGauge value={risk.compliance_score} label="Compliance Score" />
+              <RiskGauge value={risk.compliance_score} label="Compliance Risk" />
               <RiskGauge value={risk.anomaly_score} label="Anomaly Score" />
+              <RiskGauge value={risk.security_risk} label="Security Risk" />
+              <RiskGauge value={risk.attack_surface} label="Attack Surface" />
+              <RiskGauge value={risk.compound_drift} label="Compound Drift" />
+              <RiskGauge value={risk.mitigation_score} label="Mitigation Score" />
             </div>
           )}
         </Card>

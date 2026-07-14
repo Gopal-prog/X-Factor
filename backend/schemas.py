@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 from decimal import Decimal
 
 
@@ -67,6 +67,25 @@ class UpdateTwinRequest(BaseModel):
     twin_id: int
     control_id: int
     new_value: str
+
+
+class ControlUpdateItem(BaseModel):
+    control_id: int
+    new_value: str
+
+
+class AddEmployeeRequest(BaseModel):
+    employee_id: str
+    full_name: str
+    email: str
+    password: str
+    department: str
+    role: str
+
+class BulkUpdateTwinRequest(BaseModel):
+    twin_id: int
+    engineer_id: int
+    updates: List[ControlUpdateItem]
 
 
 # --------------------------

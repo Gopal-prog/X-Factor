@@ -114,25 +114,25 @@ def calculate_risk(twin_id: int, db: Session):
         compound_drift = 40
 
     # -----------------------------------------
-    # Final Rule Score
+    # Cap Scores at 100
+    # -----------------------------------------
+
+    security_risk = min(security_risk, 100)
+    attack_surface = min(attack_surface, 100)
+    compliance_score = min(compliance_score, 100)
+
+    # -----------------------------------------
+    # Final Rule Score (Preliminary)
     # -----------------------------------------
 
     final_score = (
-
         security_risk * 0.30 +
-
         attack_surface * 0.20 +
-
         business_criticality * 0.15 +
-
         compliance_score * 0.15 +
-
         compound_drift * 0.10 +
-
         anomaly_score * 0.10 -
-
         mitigation_score
-
     )
 
     final_score = max(
@@ -248,23 +248,31 @@ def calculate_risk(twin_id: int, db: Session):
         overall_anomaly = "Anomaly"
 
         anomaly_score = 30
-
-        final_score = min(
-            round(final_score + anomaly_score, 2),
-            100
+        
+        # Recalculate final score to include the new anomaly score
+        final_score = (
+            security_risk * 0.30 +
+            attack_surface * 0.20 +
+            business_criticality * 0.15 +
+            compliance_score * 0.15 +
+            compound_drift * 0.10 +
+            anomaly_score * 0.10 -
+            mitigation_score
         )
+        final_score = max(0, min(round(final_score, 2), 100))
 
-        if final_score >= 80:
-            risk_level = "Critical"
-
-        elif final_score >= 60:
-            risk_level = "High"
-
-        elif final_score >= 30:
-            risk_level = "Medium"
-
-        else:
-            risk_level = "Low"
+    # -----------------------------------------
+    # Risk Level (Recalculate)
+    # -----------------------------------------
+    
+    if final_score >= 80:
+        risk_level = "Critical"
+    elif final_score >= 60:
+        risk_level = "High"
+    elif final_score >= 30:
+        risk_level = "Medium"
+    else:
+        risk_level = "Low"
 
     # -------------------------------------------------------
     # Store Risk Analysis
@@ -299,6 +307,32 @@ def calculate_risk(twin_id: int, db: Session):
     db.commit()
 
     db.refresh(analysis)
+    
+    # -------------------------------------------------------
+    # Feature 6: Live Dashboard Update (WebSocket)
+    # -------------------------------------------------------
+    try:
+        import asyncio
+        from routes.websockets import manager
+        
+        message = {
+            "type": "RISK_UPDATE",
+            "twin_id": twin_id,
+            "final_score": float(final_score),
+            "risk_level": risk_level
+        }
+        
+        # We try to get the running loop, or run it if none exists
+        try:
+            loop = asyncio.get_running_loop()
+            loop.create_task(manager.broadcast(message))
+        except RuntimeError:
+            asyncio.run(manager.broadcast(message))
+            
+    except Exception as e:
+        # Don't let websocket failure break risk calculation
+        print(f"Failed to broadcast risk update: {e}")
+
     # -------------------------------------------------------
     # Return Final Response
     # -------------------------------------------------------

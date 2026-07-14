@@ -33,9 +33,11 @@ SecureTwin AI is an enterprise cybersecurity platform that creates Digital Twins
 
 ### Workflow & Collaboration
 - **Change Request Workflow**: Create Request → Manager Approval → Engineer Workflow
+- **Risk-Gated Approvals**: Dynamic baseline authorization based on threshold evaluations (e.g. Reject baseline updates for critical risks > 30).
 
 ### Visualization
-- **Attack Graph**: Infrastructure Visualization, Attack Path Analysis, Critical Node Highlighting
+- **Live Updates**: Real-time WebSocket integration for instantaneous risk assessments.
+- **Attack Graph**: Infrastructure Visualization, Attack Path Analysis, Critical Node Highlighting.
 
 ---
 

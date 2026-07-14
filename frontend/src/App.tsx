@@ -11,6 +11,7 @@ import Recommendations from '@/pages/Recommendations';
 import AttackGraph from '@/pages/AttackGraph';
 import AICopilot from '@/pages/AICopilot';
 import ChangeRequests from '@/pages/ChangeRequests';
+import Settings from '@/pages/Settings';
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/attack-graph" element={<ProtectedRoute><AttackGraph /></ProtectedRoute>} />
           <Route path="/copilot" element={<ProtectedRoute><AICopilot /></ProtectedRoute>} />
           <Route path="/change-requests" element={<ProtectedRoute><ChangeRequests /></ProtectedRoute>} />
+          <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>

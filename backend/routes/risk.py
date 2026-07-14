@@ -49,6 +49,8 @@ def calculate_risk_api(
 
         "Anomaly Score": analysis.anomaly_score,
 
+        "Mitigation Score": analysis.mitigation_score,
+
         "ML Prediction": result["ml_prediction"],
 
         "Isolation Forest": result["anomaly"]

@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
-import { Plus, RefreshCcw, Save, ScanSearch } from 'lucide-react';
+import { Plus, RefreshCcw, Save, ScanSearch, RotateCcw, X } from 'lucide-react';
 import AppLayout from '@/components/layout/AppLayout';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import Loader from '@/components/ui/Loader';
 import ErrorBanner from '@/components/ui/ErrorBanner';
 import Badge from '@/components/ui/Badge';
-import { getProjects, getTwins, createTwin, updateTwin, detectDrift } from '@/api/services';
-import type { Project, DigitalTwin as DigitalTwinType, DriftDetectionResult } from '@/types';
+import { getProjects, getTwins, createTwin, updateTwin, bulkUpdateTwin, detectDrift, resetTwin, getBaseline, getTwinControls } from '@/api/services';
+import type { Project, DigitalTwin as DigitalTwinType, DriftDetectionResult, BaselineControl } from '@/types';
+
+import { useAuth } from '@/context/AuthContext';
 
 export default function DigitalTwin() {
+  const { user } = useAuth();
   const [projects, setProjects] = useState<Project[]>([]);
   const [twins, setTwins] = useState<DigitalTwinType[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,19 +28,21 @@ export default function DigitalTwin() {
 
   // Update form state
   const [editingTwin, setEditingTwin] = useState<DigitalTwinType | null>(null);
-  const [editControl, setEditControl] = useState("1");
-  const [editValue, setEditValue] = useState("FALSE");
+  const [bulkEdits, setBulkEdits] = useState<Record<string, string>>({});
   const [updating, setUpdating] = useState(false);
+  const [editingBaseline, setEditingBaseline] = useState<BaselineControl[]>([]);
+  const [resettingId, setResettingId] = useState<string | null>(null);
 
   // Drift detection state
   const [detectingId, setDetectingId] = useState<string | null>(null);
   const [driftResult, setDriftResult] = useState<DriftDetectionResult | null>(null);
 
   const load = async () => {
+    if (!user) return;
     setLoading(true);
     setError(null);
     try {
-      const [p, t] = await Promise.all([getProjects(), getTwins()]);
+      const [p, t] = await Promise.all([getProjects(user.id), getTwins()]);
       setProjects(p);
       setTwins(t);
       if (p.length > 0) setNewProjectId(p[0].id);
@@ -71,32 +76,58 @@ export default function DigitalTwin() {
     }
   };
 
-  const openEdit = (twin: DigitalTwinType) => {
+  const openEdit = async (twin: DigitalTwinType) => {
     setEditingTwin(twin);
-
-    // Default control
-    setEditControl("1");
-
-    // Default modified value
-    setEditValue("FALSE");
+    setBulkEdits({});
+    setEditingBaseline([]);
+    try {
+      const controls = await getTwinControls(twin.id);
+      setEditingBaseline(controls);
+      const initialEdits: Record<string, string> = {};
+      controls.forEach(c => {
+        initialEdits[c.control_id] = String(c.parameter_value);
+      });
+      setBulkEdits(initialEdits);
+    } catch {
+      // ignore
+    }
   };
 
   const handleUpdate = async (e: FormEvent) => {
     e.preventDefault();
-    if (!editingTwin) return;
+    if (!editingTwin || !user) return;
     setUpdating(true);
     setError(null);
     setSuccess(null);
     try {
-      const updated = await updateTwin({id: editingTwin.id,control_id: editControl,new_value: editValue});
-      setTwins((prev) => prev.map((t) => (t.id === editingTwin.id ? { ...t, ...updated } : t)));
-      setSuccess("Security configuration updated successfully.");
+      const updates = Object.entries(bulkEdits).map(([control_id, new_value]) => ({
+        control_id,
+        new_value
+      }));
+      
+      const result = await bulkUpdateTwin({
+        twin_id: editingTwin.id,
+        engineer_id: user.id,
+        updates
+      });
+      
+      if (result.drifts_detected > 0) {
+        setSuccess(`Success! ${result.drifts_detected} drift(s) detected and a Change Request was automatically created for the Security Manager.`);
+      } else {
+        setSuccess("Configuration updated successfully. No drifts detected.");
+      }
+      
+      load();
       setEditingTwin(null);
     } catch (err) {
       setError((err as { message?: string })?.message || 'Failed to update digital twin.');
     } finally {
       setUpdating(false);
     }
+  };
+
+  const handleBulkEditChange = (controlId: string, val: string) => {
+    setBulkEdits(prev => ({...prev, [controlId]: val}));
   };
 
   const handleDetectDrift = async (twinId: string) => {
@@ -112,6 +143,21 @@ export default function DigitalTwin() {
       setDetectingId(null);
     }
   };
+
+  const handleReset = async (twinId: string) => {
+    setResettingId(twinId);
+    try {
+      await resetTwin(twinId);
+      setSuccess(`Twin ${twinId} has been securely reset to its baseline configuration.`);
+      setTwins(prev => prev.map(t => t.id === twinId ? { ...t, status: 'approved' } : t));
+    } catch (err) {
+      setError((err as { message?: string })?.message || 'Failed to reset twin.');
+    } finally {
+      setResettingId(null);
+    }
+  };
+
+  const closeDriftModal = () => setDriftResult(null);
 
   return (
     <AppLayout title="Digital Twin">
@@ -170,74 +216,61 @@ export default function DigitalTwin() {
 
   <div>
     <label className="block text-xs font-medium text-muted mb-1.5">
-      Twin
+      Twin ID: {editingTwin.id} — Name:
     </label>
-
     <input
       value={editingTwin.name}
       disabled
-      className="w-full bg-surface-hover border border-border rounded-lg px-3 py-2 text-sm"
+      className="w-full bg-surface-hover border border-border rounded-lg px-3 py-2 text-sm text-muted"
     />
   </div>
 
-  <div>
-    <label className="block text-xs font-medium text-muted mb-1.5">
-      Security Control
-    </label>
-
-    <select
-      value={editControl}
-      onChange={(e)=>setEditControl(e.target.value)}
-      className="w-full bg-surface-hover border border-border rounded-lg px-3 py-2 text-sm"
-    >
-      <option value="1">CloudTrail</option>
-      <option value="2">Security Group</option>
-      <option value="3">IAM MFA</option>
-      <option value="4">SSH Access</option>
-    </select>
-
+  <div className="max-h-80 overflow-y-auto border border-border rounded-lg">
+    <table className="w-full text-sm text-left">
+      <thead className="bg-surface-hover sticky top-0 border-b border-border z-10">
+        <tr>
+          <th className="px-3 py-2 font-medium text-muted text-xs">Domain</th>
+          <th className="px-3 py-2 font-medium text-muted text-xs">Parameter</th>
+          <th className="px-3 py-2 font-medium text-muted text-xs">Severity</th>
+          <th className="px-3 py-2 font-medium text-muted text-xs">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {editingBaseline.length === 0 ? (
+          <tr><td colSpan={4} className="p-4 text-center text-muted">Loading parameters...</td></tr>
+        ) : (
+          editingBaseline.map(b => (
+            <tr key={b.control_id} className="border-b border-border/50 hover:bg-surface-hover/30">
+              <td className="px-3 py-2 text-xs">{b.domain} - {b.system_name}</td>
+              <td className="px-3 py-2 text-xs font-medium">{b.parameter_name}</td>
+              <td className="px-3 py-2 text-xs text-muted">{b.severity || 'Normal'}</td>
+              <td className="px-3 py-2">
+                <input 
+                  type="text"
+                  value={bulkEdits[b.control_id] ?? ''}
+                  onChange={(e) => handleBulkEditChange(String(b.control_id), e.target.value)}
+                  className="w-full bg-surface-hover border border-border rounded px-2 py-1 text-xs focus-ring"
+                />
+              </td>
+            </tr>
+          ))
+        )}
+      </tbody>
+    </table>
   </div>
 
-  <div>
-
-    <label className="block text-xs font-medium text-muted mb-1.5">
-      New Value
-    </label>
-
-    <select
-      value={editValue}
-      onChange={(e)=>setEditValue(e.target.value)}
-      className="w-full bg-surface-hover border border-border rounded-lg px-3 py-2 text-sm"
-    >
-
-      <option value="TRUE">TRUE</option>
-
-      <option value="FALSE">FALSE</option>
-
-    </select>
-
-  </div>
-
-  <div className="flex gap-2">
-
-    <Button type="submit" loading={updating}>
-
+  <div className="flex gap-2 pt-2">
+    <Button type="submit" loading={updating} className="w-full justify-center">
       <Save size={16}/>
-
-      Update Configuration
-
+      Save All Changes
     </Button>
-
     <Button
       type="button"
       variant="secondary"
       onClick={()=>setEditingTwin(null)}
     >
-
       Cancel
-
     </Button>
-
   </div>
 
 </form>
@@ -287,6 +320,31 @@ export default function DigitalTwin() {
                           </Button>
                           <Button
                             variant="secondary"
+                            onClick={async () => {
+                              try {
+                                const { generateComplianceReport } = await import('@/api/services');
+                                const report = await generateComplianceReport(t.id);
+                                alert(`Report Generated: ${report.status}\n\nCompliance Scores:\nISO 27001: ${report.compliance?.['ISO 27001'] || 'N/A'}\nNIST: ${report.compliance?.['NIST'] || 'N/A'}\nPCI DSS: ${report.compliance?.['PCI DSS'] || 'N/A'}`);
+                              } catch (e) {
+                                alert('Failed to generate report.');
+                              }
+                            }}
+                            className="!px-2.5 !py-1.5 text-xs text-accent"
+                          >
+                            PDF Report
+                          </Button>
+                          <Button
+                            variant="secondary"
+                            loading={resettingId === t.id}
+                            onClick={() => handleReset(t.id)}
+                            className="!px-2.5 !py-1.5 text-xs !text-safe !border-safe/30 hover:!bg-safe/10"
+                            title="Reset to Secure Baseline"
+                          >
+                            <RotateCcw size={14} />
+                            Reset
+                          </Button>
+                          <Button
+                            variant="secondary"
                             loading={detectingId === t.id}
                             onClick={() => handleDetectDrift(t.id)}
                             className="!px-2.5 !py-1.5 text-xs"
@@ -312,21 +370,54 @@ export default function DigitalTwin() {
         </Card>
 
         {driftResult && (
-          <Card title={`Drift Detection Result — ${driftResult.twin_id}`}>
-            <p className="text-sm text-text mb-3">
-              <span className="font-semibold">{driftResult.drifts_found}</span> drift(s) found.
-            </p>
-            {driftResult.details?.length > 0 && (
-              <ul className="space-y-2">
-                {driftResult.details.map((d) => (
-                  <li key={d.id} className="flex items-center justify-between text-sm border-b border-border/60 pb-2">
-                    <span className="text-muted">{d.drift_type}</span>
-                    <Badge severity={d.severity}>{d.severity}</Badge>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </Card>
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-bg/80 backdrop-blur-sm p-4">
+            <div className="bg-surface border border-border rounded-xl shadow-xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+              <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-surface-hover/50">
+                <h3 className="font-semibold text-text flex items-center gap-2">
+                  <ScanSearch size={18} className="text-accent" />
+                  Drift Detection Result — Twin #{driftResult.twin_id}
+                </h3>
+                <button onClick={closeDriftModal} className="text-muted hover:text-text p-1 rounded focus-ring">
+                  <X size={18} />
+                </button>
+              </div>
+              <div className="p-5 space-y-4">
+                <div className={`p-4 rounded-lg border ${driftResult.drifts_found > 0 ? 'bg-critical/10 border-critical/30' : 'bg-safe/10 border-safe/30'}`}>
+                  <p className="text-sm font-medium text-text">
+                    <span className={`text-lg font-bold mr-1 ${driftResult.drifts_found > 0 ? 'text-critical' : 'text-safe'}`}>
+                      {driftResult.drifts_found}
+                    </span>
+                    drift(s) found in configuration.
+                  </p>
+                  {driftResult.drifts_found === 0 && (
+                    <p className="text-xs text-muted mt-1">This Digital Twin fully matches its secure baseline.</p>
+                  )}
+                </div>
+
+                {driftResult.details?.length > 0 && (
+                  <div className="space-y-2 max-h-60 overflow-y-auto pr-2">
+                    {driftResult.details.map((d) => (
+                      <div key={d.id} className="flex items-center justify-between p-3 rounded-lg border border-border/60 bg-surface-hover/30 text-sm">
+                        <span className="font-medium text-text">{d.drift_type}</span>
+                        <Badge severity={d.severity}>{d.severity}</Badge>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                
+                <div className="pt-2 flex justify-end">
+                  {driftResult.drifts_found > 0 ? (
+                    <Button onClick={() => { closeDriftModal(); handleReset(driftResult.twin_id); }} className="!bg-safe hover:!bg-safe/90 text-white">
+                      <RotateCcw size={16} />
+                      Reset to Baseline
+                    </Button>
+                  ) : (
+                    <Button variant="secondary" onClick={closeDriftModal}>Close</Button>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </AppLayout>

@@ -16,7 +16,7 @@ const styles: Record<string, string> = {
 export default function Badge({ children, severity }: { children: React.ReactNode; severity: string }) {
   const cls = styles[severity as Severity] ?? 'bg-accent/10 text-accent border-accent/30';
   return (
-    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border capitalize ${cls}`}>
+    <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold tracking-wide border capitalize backdrop-blur-sm shadow-sm ${cls}`}>
       {children}
     </span>
   );

@@ -11,9 +11,17 @@ from routes.approval import router as approval_router
 from routes.dashboard import router as dashboard_router
 from routes.attack_graph import router as attack_graph_router
 from routes.copilot import router as copilot_router
-
+from routes.ml_admin import router as ml_admin_router
+from routes.websockets import router as websockets_router
+from routes.reports import router as reports_router
+from routes.admin import router as admin_router
 
 from fastapi.middleware.cors import CORSMiddleware
+from database import engine
+import models
+
+# Ensure all new tables (like AttackGraph) are created
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="SecureTwin AI",
@@ -39,7 +47,10 @@ app.include_router(approval_router)
 app.include_router(dashboard_router)
 app.include_router(attack_graph_router)
 app.include_router(copilot_router)
-
+app.include_router(ml_admin_router)
+app.include_router(websockets_router)
+app.include_router(reports_router)
+app.include_router(admin_router)
 
 @app.get("/")
 def home():

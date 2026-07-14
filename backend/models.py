@@ -197,8 +197,10 @@ class ChangeRequest(Base):
         Enum(
             "Pending",
             "Under Review",
+            "Pending Admin Approval",
             "Approved",
             "Rejected",
+            "Deployed",
             name="request_status"
         ),
         default="Pending"

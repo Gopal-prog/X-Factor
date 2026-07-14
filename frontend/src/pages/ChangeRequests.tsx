@@ -61,7 +61,7 @@ export default function ChangeRequests() {
       setLoading(true);
 
       const [p, t, r] = await Promise.all([
-      getProjects(),
+      getProjects(user!.id),
       getTwins(),
       getChangeRequests(user!.id, user!.role),
     ]);
@@ -160,25 +160,15 @@ export default function ChangeRequests() {
     id: string,
     decision: "Approved" | "Rejected"
   ) => {
-
     try {
-
       setDecisionLoading(id);
-
-      await submitApproval(id, {
-
+      await submitApproval(id, user!.id, {
         decision,
-
       });
-
       await loadData();
-
     } finally {
-
       setDecisionLoading(null);
-
     }
-
   };
     return (
     <AppLayout title="Change Management">
@@ -534,9 +524,8 @@ export default function ChangeRequests() {
 
                       </div>
 
-                      {r.status === "Pending" &&
-                          (user?.role === "Security Manager" ||
-                            user?.role === "Administrator") && (
+                      {((r.status === "Pending" && (user?.role === "Security Manager" || user?.role === "Administrator")) || 
+                        (r.status === "Pending Admin Approval" && user?.role === "Administrator")) && (
 
                             <div className="flex gap-3 mt-5">
 

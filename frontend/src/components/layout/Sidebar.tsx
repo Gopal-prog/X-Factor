@@ -10,6 +10,7 @@ import {
   Bot,
   GitPullRequest,
   ShieldHalf,
+  Settings,
 } from "lucide-react";
 
 const navItems = [
@@ -21,13 +22,14 @@ const navItems = [
   { to: '/recommendations', label: 'Recommendations', icon: Lightbulb },
   { to: '/attack-graph', label: 'Attack Graph', icon: Network },
   { to: '/copilot', label: 'AI Copilot', icon: Bot },
-  { to: '/Change-Requests', label: 'Change Request', icon: GitPullRequest },
+  { to: '/change-requests', label: 'Change Request', icon: GitPullRequest },
+  { to: '/settings', label: 'Settings', icon: Settings },
 ];
 
 export default function Sidebar() {
   return (
-    <aside className="hidden md:flex md:flex-col w-64 shrink-0 border-r border-border bg-surface/60 h-screen sticky top-0">
-      <div className="flex items-center gap-2 px-5 h-16 border-b border-border">
+    <aside className="hidden md:flex md:flex-col w-64 shrink-0 border-r border-border glass-panel h-screen sticky top-0 z-20">
+      <div className="flex items-center gap-2 px-5 h-16 border-b border-border bg-surface/30">
         <div className="h-8 w-8 rounded-lg bg-accent/15 text-accent flex items-center justify-center">
           <ShieldHalf size={18} />
         </div>

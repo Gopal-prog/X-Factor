@@ -67,12 +67,18 @@ export interface Project {
 }
 
 export interface BaselineControl {
-  id: string;
+  id?: string;
   control_id: string;
-  name: string;
-  category: string;
-  status: 'compliant' | 'non-compliant' | 'partial';
+  name?: string;
+  category?: string;
+  status?: 'compliant' | 'non-compliant' | 'partial';
   last_checked?: string;
+  domain?: string;
+  system_name?: string;
+  control_name?: string;
+  parameter_name?: string;
+  parameter_value?: string;
+  severity?: string;
 }
 
 // ---------- Digital Twin ----------
@@ -111,6 +117,10 @@ export interface RiskAssessment {
   business_criticality: number;
   compliance_score: number;
   anomaly_score: number;
+  security_risk: number;
+  attack_surface: number;
+  compound_drift: number;
+  mitigation_score: number;
 }
 
 // ---------- Change Requests / Approvals ----------

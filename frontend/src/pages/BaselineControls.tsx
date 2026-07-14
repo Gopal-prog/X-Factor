@@ -6,8 +6,10 @@ import ErrorBanner from '@/components/ui/ErrorBanner';
 import Badge from '@/components/ui/Badge';
 import { getProjects, getBaseline } from '@/api/services';
 import type { Project, BaselineControl } from '@/types';
+import { useAuth } from '@/context/AuthContext';
 
 export default function BaselineControls() {
+  const { user } = useAuth();
   const [projects, setProjects] = useState<Project[]>([]);
   const [projectId, setProjectId] = useState<string>('');
   const [baseline, setBaseline] = useState<BaselineControl[]>([]);
@@ -20,7 +22,7 @@ export default function BaselineControls() {
     (async () => {
       setLoading(true);
       try {
-        const data = await getProjects();
+        const data = await getProjects(user!.id);
         if (cancelled) return;
         setProjects(data);
         if (data.length > 0) setProjectId(data[0].id);

@@ -36,7 +36,7 @@ export default function Login() {
           <div className="h-14 w-14 rounded-2xl bg-accent/15 text-accent flex items-center justify-center mb-4">
             <ShieldHalf size={28} />
           </div>
-          <h1 className="text-xl font-bold text-text">Cyber Digital Twin Platform</h1>
+          <h1 className="text-xl font-bold text-text">Secure AI Digital Twin Platform</h1>
           <p className="text-sm text-muted mt-1">Sign in to your security workspace</p>
         </div>
 

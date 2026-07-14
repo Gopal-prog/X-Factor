@@ -17,7 +17,7 @@ const accentMap: Record<string, string> = {
 
 export default function StatCard({ label, value, icon: Icon, accent = 'accent', suffix }: StatCardProps) {
   return (
-    <div className="rounded-xl border border-border bg-surface p-5 flex items-center justify-between hover:border-accent/50 transition-colors">
+    <div className="rounded-2xl glass-panel p-6 flex items-center justify-between hover:border-accent/50 glow-hover">
       <div>
         <p className="text-xs uppercase tracking-wide text-muted font-medium">{label}</p>
         <p className="mt-2 text-3xl font-bold text-text">
